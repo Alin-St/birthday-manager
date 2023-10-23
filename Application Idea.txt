@@ -20,12 +20,13 @@ Birthday:
 
 4. Persistence details
 - create: this operation is performed both locally and on the server
-- read: the entities are fetched from the server when performing this operation
+- read: if online, the entities are fetched from the server when performing this operation, otherwise the local database is shown
 - update: this operation is performed both locally and on the server
 - delete: this operation is performed both locally and on the server
+- when the user is online the changes to the online database will be performed on the local database, and the local create operations will be performed on the online server (the local database and online database should be kept in sync whenever possible)
 
 5. Details on what is happening when the device is offline
 - create: if the user is online the entity is saved to the server, otherwise it's saved locally and persisted to the server when the user becomes online
-- read: if the user is offline a message will appear when viewing the entities, informing the user of potential discrepancies with the online database
+- read: if the user is offline a message will appear when viewing the entities, informing the user of potential discrepancies with the online database and the local database will be shown
 - update: if the user is offline an error should occur, otherwise the update is persisted to the server
 - delete: if the user is offline an error should occur, otherwise the update is persisted to the server
