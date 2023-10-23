@@ -1,0 +1,31 @@
+Mobile Application Idea - Birthday Manager:
+1. Description
+An application that helps you manage and remember birthdays. The application will send a notification when someone's birthday is due and 7 days before it. The application allows you to order birthdays chronologically and to filter close family and friends from other acquaintances
+Example of a notification: "Birthday Manager: [Name] will turn [current age + 1] in 7 days!"
+
+2. Domain details
+Birthday:
+- id: used to identify the birthdays, not visible to the user
+- name: text field representing the name of the birthday; it's intended to put the name of the birthday person here
+- date: the actual date of the birthday; consists of the day of the month and month
+- birthdate year: the year the person was born in; used to compute the age they turn in
+- additional details: text field containing more details about the birthday, such as the preffered present
+- is family or closed friend: checkbox used to separate family and closed friends from other acquaintances
+
+3. CRUD operations
+- create: the user can create new entities (birthdays); when creating a birthday the user is asked to introduce each field
+- read: the user can view all birthdays on the main page, ordered in the order they occur each year, starting with Jan 1st; the user has the option to filter out non family members and close friends; only the name, due date and future age will be visible on the main page for each birthday; to see more details the user can view the entity separately
+- update: while opening a birthday separately, the user has the option to update it; the user can update each field
+- delete: while opening a birthday separately, the user has the option to delete it
+
+4. Persistence details
+- create: this operation is performed both locally and on the server
+- read: the entities are fetched from the server when performing this operation
+- update: this operation is performed both locally and on the server
+- delete: this operation is performed both locally and on the server
+
+5. Details on what is happening when the device is offline
+- create: if the user is online the entity is saved to the server, otherwise it's saved locally and persisted to the server when the user becomes online
+- read: if the user is offline a message will appear when viewing the entities, informing the user of potential discrepancies with the online database
+- update: if the user is offline an error should occur, otherwise the update is persisted to the server
+- delete: if the user is offline an error should occur, otherwise the update is persisted to the server
